@@ -1,0 +1,26 @@
+{
+  "name": "expresscourse",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "server": "nodemon ./express101/nodeServer.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "server": "nodemon /express101/server.js",
+    "type": "git",
+    "url": "git+https://github.com/mrkarthik3/JustExpress.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrkarthik3/JustExpress/issues"
+  },
+  "homepage": "https://github.com/mrkarthik3/JustExpress#readme",
+  "description": ""
+}
