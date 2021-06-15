@@ -1,0 +1,24 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<script>
+    // creating a POST request using JQuery
+    const ourRequest = $.ajax({
+        method: "POST",
+        url: "http://localhost:3000/ajax",
+        dataType: "json",
+        data: {
+            name: "Rob"
+        }
+    })
+
+    ourRequest.then((response, statusCode, xmlhtpo) => console.log(response))
+
+    /**
+     * This promise does not resolve, because
+     * this request generates response of text/html
+     * type and our ajax promise will not and doesn't know what
+     * to do with text/html. There for it will not resolve.
+     * Hence it did not do the log....
+     */
+</script>

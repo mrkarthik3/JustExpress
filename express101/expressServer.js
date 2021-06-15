@@ -19,6 +19,7 @@
  *
  * Middleware - Express allows us to hijack the process of
  * changing the request and response objects ANYTIME ANYWAY We want to...
+ * Basically, it allows modifying the request and response objects anytime... anyway....
  *
  * Routing...  Remove cumbersome and repetitive way of hanlding routing using
  * http module. Express makes this very simple.
@@ -28,10 +29,10 @@
  *
  */
 
-// path is native to NodeJS
+// path is native to NodeJS like http module
 const path = require("path");
 
-// http is a native module
+// http is a native module to NodeJS
 // const http = require('http')
 // express is a 3rd party module
 
@@ -54,6 +55,8 @@ app.use(express.static("./express101/public"));
 // all is a method, and it takes 2 args:
 // 1. route
 // 2. callback to run if the route is requested
+
+/** Basically all() method handles ALL types of requests to the URL/route mentioned in its argument */
 
 app.all("/", (req, res) => {
   // Express handles the basic headers of response automatically!(statuscodes,mime-type) That is Awesome!
