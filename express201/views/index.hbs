@@ -1,1 +1,32 @@
 <h1>Rendered File - HBS Template!</h1>
+<p>HBS is considered shorthand compared to EJS</p>
+Your message is : {{msg}} !!!
+{{!-- In handlebars {{msg}} are used (two flower brackets) --}}
+
+TO prevent handlebars from escaping html (which it thinks is unsafe),
+use three brackets.
+
+{{{html}}}
+
+{{!-- Country name: {{country.name}}
+Country capital: {{country.capital}} 
+--}}
+
+{{!-- each and if helpers. This is HBS Comment! It wont show in DOM --}}
+<!-- HTML Comment - This will show in DOM. -->
+
+{{!-- You can do forEach loop using #each helper and if-check using #if 
+and unless using #unless--}}
+{{#each countries}}
+    {{#if this.western}}
+        <li>{{this.name}} -- {{this.capital}}</li>
+    {{/if}}
+{{/each}}
+
+{{#each countries}}
+    {{#unless this.western}}
+        <li>{{this.name}} -- {{this.capital}}</li>
+    {{/unless}}
+{{/each}}
+
+{{!-- Go to Hanldebars documentation to learn more. --}}

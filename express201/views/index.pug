@@ -1,3 +1,35 @@
-h3 Rendered File!
-p This is a paragraph
-p Note that PUG Template Engine's syntax is a little different.
+doctype html 
+html
+    head
+        title This is Pug
+        script(src="https://code.jquery.com/jquery-3.6.0.js")
+        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css")
+    body 
+        h3 Rendered File!
+        p Pug is an indented templating language.
+        div
+            p (Inside div)Wrong indentation will break the code.
+            p A message inside div.
+
+        p (Outside div due to no-indent) 
+        p Note that PUG Template Engine's syntax has more learning curve. But it is extreme short-hand language. Meaning, you can write a lot of code very fast, if you are good with Pug.
+
+        div.container
+            div.row 
+                div.col-sm-3 #{msg}
+                p This is how you use data... from res.locals
+                p Just place the property name inside {} preceeded by #
+                div.col-sm-3 Your message is... #{msg}
+                div.col-sm-6 Your message is... #{msg2}
+                div.col-sm-12 !{html}
+                p Use ! with {} in order to evaluate the HTML 
+            
+            div.row 
+                p You can run forEach in Pug like below 
+                ul.col-sm-12 
+                    each country in countries 
+                        li= country.name + ' -- ' + country.capital
+                        if country.western 
+                            div.western This country is in the western hemisphere.
+
+

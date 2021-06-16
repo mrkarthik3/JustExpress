@@ -15,8 +15,17 @@ So, this is cool! -->
 <h1><%= msg2 %></h1>
 <h1><%= validated %></h1>
 <p><%- html %></p> -->
+
+<!-- HTML is considered unsafe. Therefore... when = is used, html is escaped and not evaluated.
+TO evaluate HTML, you must use - instead of = -->
    
-<!-- <%# This is a comment. %>  -->
+<!-- <%# This is an EJS comment. %>  -->
+
+<!-- Above EJS comment will not show up in DOM -->
+
+<!-- This is a normal comment that shows up in the DOM as a commented HTML !! -->
+
+<!-- Why would anyone want to write <%% in a html file ? -->
 
 <!-- The msg and msg2 are attached to the locals object 
 So, they can be accessed using locals.msg or locals.msg2
@@ -27,20 +36,8 @@ BIG PICTURE: All templates( files in "views" folder) have access to properties p
 There is no need to explicitly say locals.property1, locals.property2 to access
 the values of property1 and property2. 
 
-It is assumed that you are on the locals object... So, just use property1, property2 ... directly. -->
-
-
-<!-- Above EJS comment will not show up in DOM -->
-
-<!-- This is a normal comment that shows up in the DOM!! -->
-
-<!-- Why would anyone want to write <%% in a html file ? -->
-
-
-<!-- HTML is considered unsafe. Therefore... when = is used, html is escaped and not evaluated.
-TO evaluate HTML, you must use - instead of = -->
-
-
+It is assumed that you are on the locals object... So, just use property1, property2 ... directly
+instead of using locals.propertyName... like below -->
 
 
 <!-- <h2><%= locals.msg %></h2>
@@ -52,7 +49,10 @@ TO evaluate HTML, you must use - instead of = -->
 <!-- You can put JS in EJS file.
 To put JS, a line should start with "<%" and must end with "%>".
 There is no need to put those opening and ending tags for html.
-You can put HTML freely.-->
+You can put HTML freely.
+
+
+-->
 
 <!-- Example 1 -->
 <!-- <% for(let i=0; i < 10; i++) { %>
@@ -91,7 +91,20 @@ So, only pure html is sent to browser  -->
 <br> -->
 
 <!-- As the script can be run by browser, it is sent to the browser directly
-Browser will interpret it and do the needful -->
+Browser will interpret it and do the needful 
+
+Due to recent changes to Helmet Module, You must edit content security policy like below
+for code inside script tags to work 
+
+app.use(
+  helmet.contentSecurityPolicy({
+    useDefaults: true,
+    directives: {
+      "script-src": ["'unsafe-inline'"],
+    },
+  })
+);
+-->
 
 <!-- <script>
 for (let i = 0; i < 10; i++) {
