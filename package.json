@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
+    "cookie-parser": "^1.4.5",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "hbs": "^4.1.2",
@@ -12,7 +13,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "server": "nodemon ./express201/pugPractice.js",
+    "server": "nodemon ./express301/routerApp.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
