@@ -53,11 +53,12 @@
 		
 		<p>
 			Production Companies :
-		</p>	
+		</p>
+		<!-- <% if(parsedData.production_companies != undefined) {%>	 -->
 		<% parsedData.production_companies.forEach((company) => { %>
 			<li><%= company.name %></li>
 		<% }) %>
-	
+		<!-- <%}%>		 -->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

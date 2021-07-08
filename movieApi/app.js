@@ -5,12 +5,26 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const helmet = require('helmet')
 
+// /now_playing/...
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+// /movie/...
+const movieRouter = require('./routes/movie');
+// /search/...
+const searchRouter = require('./routes/search');
 
 var app = express();
 
 app.use(helmet())
+
+app.use((req, res, next) => {
+  // cut off if the response if the api key is bad
+  if (req.query.apiKey != '123456789') {
+    res.status(401) // Unauthorized = 401, NOT a 200
+    res.json("Invalid API Key")
+  } else {
+    next();
+  }
+})
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,7 +37,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/movie', movieRouter);
+app.use('/search', searchRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
